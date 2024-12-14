@@ -5,6 +5,13 @@ class GameState:
 
     game_name = "Tic-Tac-Toe Misere"
 
+    def __str__(self):
+        """
+        Retorna uma representação legível do estado do jogo, incluindo o tabuleiro e o jogador atual.
+        """
+        board_str = str(self.board)  # Assume que Board já implementa __str__
+        return f"Player: {self.player}\nBoard:\n{board_str}"
+
     def __init__(self, board: Board, player: str):
         self.board = board
         self.player = player
@@ -19,8 +26,8 @@ class GameState:
         col, row = move
         return 0 <= row < 3 and 0 <= col < 3 and self.board.is_empty(row, col)
 
-    def legal_moves(self) -> set:
-        return {(col, row) for row in range(3) for col in range(3) if self.is_legal_move((col, row))}
+    def legal_moves(self) -> list:
+        return [(col, row) for row in range(3) for col in range(3) if self.is_legal_move((col, row))]
 
     def winner(self) -> Union[str, None]:
         loser = self.board.check_loser()

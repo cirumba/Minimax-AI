@@ -12,9 +12,9 @@ from .minimax import minimax_move
 
 
 def make_move(state: GameState) -> Tuple[int, int]:
-    if state.is_initial_state():
-        return state.next_state((1, 1))
-    return minimax_move(state, 9, utility)
+    print(f"Current State: {state}")
+    move = minimax_move(state, 9, utility)
+    print(f"Chosen Move: {move}")
 
 def utility(state, player:str) -> float:
     winner = state.winner()
@@ -22,4 +22,6 @@ def utility(state, player:str) -> float:
         return 1  
     elif winner is not None:
         return -1
+    elif state.is_terminal():
+        return 0
     return 0
