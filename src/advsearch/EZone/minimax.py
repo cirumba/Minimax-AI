@@ -3,14 +3,32 @@ from typing import Tuple, Callable
 
 
 
-def minimax_move(state, max_depth:int, eval_func:Callable) -> Tuple[int, int]:
-    """
-    Returns a move computed by the minimax algorithm with alpha-beta pruning for the given game state.
-    :param state: state to make the move (instance of GameState)
-    :param max_depth: maximum depth of search (-1 = unlimited)
-    :param eval_func: the function to evaluate a terminal or leaf state (when search is interrupted at max_depth)
-                    This function should take a GameState object and a string identifying the player,
-                    and should return a float value representing the utility of the state for the player.
-    :return: (int, int) tuple with x, y coordinates of the move (remember: 0 is the first row/column)
-    """
-    raise NotImplementedError()
+def minimax_move(state, max_depth: int, eval_func: Callable) -> Tuple[int, int]:
+        def minimax(state, depth, maximizing_player):
+            if depth == 0 or state.is_terminal():
+                return eval_func(state, state.player), None
+
+            legal_moves = state.legal_moves()
+            if maximizing_player:
+                max_eval = float('-inf')
+                best_move = None
+                for move in legal_moves:
+                    new_state = state.next_state(move)
+                    eval_score, _ = minimax(new_state, depth - 1, False)
+                    if eval_score > max_eval:
+                        max_eval = eval_score
+                        best_move = move
+                return max_eval, best_move
+            else:
+                min_eval = float('inf')
+                best_move = None
+                for move in legal_moves:
+                    new_state = state.next_state(move)
+                    eval_score, _ = minimax(new_state, depth - 1, True)
+                    if eval_score < min_eval:
+                        min_eval = eval_score
+                        best_move = move
+                return min_eval, best_move
+
+        _, best_move = minimax(state, max_depth, True)
+        return best_move

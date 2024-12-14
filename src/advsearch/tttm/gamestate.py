@@ -9,23 +9,18 @@ class GameState:
         self.board = board
         self.player = player
 
+    def is_initial_state(self) -> bool:
+        return all(self.board.is_empty(row, col) for row in range(3) for col in range(3))
+
     def is_terminal(self) -> bool:
         return self.board.is_full() or self.winner() is not None
 
     def is_legal_move(self, move: Tuple[int, int]) -> bool:
-        """
-        Checks whether the given move (x, y) is legal in this state.
-        """
         col, row = move
         return 0 <= row < 3 and 0 <= col < 3 and self.board.is_empty(row, col)
 
     def legal_moves(self) -> set:
-        moves = set()
-        for row in range(3):
-            for col in range(3):
-                if self.is_legal_move((col, row)):
-                    moves.add((col, row))
-        return moves
+        return {(col, row) for row in range(3) for col in range(3) if self.is_legal_move((col, row))}
 
     def winner(self) -> Union[str, None]:
         loser = self.board.check_loser()

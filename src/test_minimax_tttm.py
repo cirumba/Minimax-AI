@@ -6,8 +6,8 @@ from advsearch.tttm.gamestate import GameState
 import advsearch.timer as timer
 
 # mude your_agent pelo nome do seu modulo nos imports abaixo
-import advsearch.your_agent.minimax as minimax          
-import advsearch.your_agent.tttm_minimax as tttm_agent  
+import advsearch.ezone.minimax as minimax          
+import advsearch.ezone.tttm_minimax as tttm_agent  
 
 def mirror_move(state: GameState) -> Tuple[int, int]:
     """
@@ -72,7 +72,8 @@ BW.
         #global board, state
         board = Board()
         state = GameState(board, 'B')
-
+        print(state.is_initial_state())
+        print(tttm_agent.make_move(state))
         # configura a funcao minimax pra receber o estado, profundidade ilimitada e a funcao de utilidade definida no agente
         move = self.run_with_timeout(60, minimax.minimax_move, (state, -1, tttm_agent.utility) )
 
