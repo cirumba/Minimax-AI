@@ -8,15 +8,18 @@ Turma da Manha (A)
 ## Dependências(MUDAR)
 Utilizamos apenas bibliotecas padrão do Python e não precisa da instalação de dependências externas.
 
-Bibliotecas usadas: `math` & ``
+Bibliotecas usadas: 
 
 ## Avaliação 
  
-- O minimax sempre ganha ou empata jogando contra o randomplayer?  
+- O minimax sempre ganha ou empata jogando contra o randomplayer?    
+Resposta: Sim, o Minimax deve sempre ganhar ou empatar contra jogadas aleatórias. O Minimax explora todas as possibilidades do jogo e escolhe o melhor movimento possível.
 
-- O minimax sempre empata consigo mesmo?  
+- O minimax sempre empata consigo mesmo?    
+Resposta: Sim, se houver uma estratégia perfeita para ambos os lados, o Minimax deve sempre empatar contra si mesmo, ja que ambos conhecem as melhores jogadas possíveis.
 
-- O minimax não perde para você quando você usa a sua melhor estratégia?        
+- O minimax não perde para você quando você usa a sua melhor estratégia?    
+Resposta: Sim, o Minimax não deve perder se for implementado corretamente, pois ele calcula todas as possibilidades e sempre escolhe o movimento que evita a derrota.      
 
 ## Othello
 - Explique  a  heurística  customizada  e,  caso  tenha  sido  utilizada  alguma  fonte  (como 
