@@ -23,15 +23,18 @@ Resposta: Sim, o Minimax não deve perder se for implementado corretamente, pois
 
 ## Avaliação Othello
  
-Partidas: 
-Contagem de peças X Valor posicional: Posicional
-Valor posicional X Contagem de peças: Posicional
-Contagem de peças X Heurística customizada: Customizada
-Heurística customizada X Contagem de peças: Customizada
-Valor posicional X Heurística customizada: Customizada
-Heurística customizada X Valor posicional: Customizada
+Partidas:       
+Contagem de peças X Valor posicional: Posicional        
+Valor posicional X Contagem de peças: Posicional              
+Contagem de peças X Heurística customizada: Customizada     
+Heurística customizada X Contagem de peças: Customizada     
+Valor posicional X Heurística customizada: Customizada      
+Heurística customizada X Valor posicional: Customizada      
  
-Também  observe  e  relate  qual  implementação  foi  a  mais  bem-sucedida  de  todas: Melhor heuristica foi a customizada 
-- Explique  a  heurística  customizada: Equilibrar controle de bordas, estabilidade e mobilidade.Abordagem balanceada que combina aspectos das outras heurísticas.Sendo boa em todas as fases do jogo. 
-- Descrição do critério de parada do agente: O agente utiliza o algoritmo Minimax com Poda Alfa-Beta, limitado a uma profundidade máxima fixa de 3 níveis, sendo um compromisso entre desempenho computacional e qualidade das decisões.
-- Explique a implementação escolhida para o torneio: Foi escolhida a heuristica customizada visto que eh a mais vencedora.
+Também  observe  e  relate  qual  implementação  foi  a  mais  bem-sucedida  de  todas: Melhor heuristica foi a customizada     
+
+Explique  a  heurística  customizada: Equilibrar controle de bordas, estabilidade e mobilidade.Abordagem balanceada que combina aspectos das outras heurísticas.Sendo boa em todas as fases do jogo.        
+
+Descrição do critério de parada do agente: O agente utiliza o algoritmo Minimax com Poda Alfa-Beta, limitado a uma profundidade máxima fixa de 3 níveis, sendo um compromisso entre desempenho computacional e qualidade das decisões.      
+
+Explique a implementação escolhida para o torneio: Foi escolhida a heuristica customizada visto que eh a mais vencedora.
