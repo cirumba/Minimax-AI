@@ -26,8 +26,13 @@ class GameState:
         col, row = move
         return 0 <= row < 3 and 0 <= col < 3 and self.board.is_empty(row, col)
 
-    def legal_moves(self) -> list:
-        return [(col, row) for row in range(3) for col in range(3) if self.is_legal_move((col, row))]
+    def legal_moves(self) -> set:
+        moves = set()
+        for row in range(3):
+            for col in range(3):
+                if self.is_legal_move((col, row)):
+                    moves.add((col, row))
+        return moves
 
     def winner(self) -> Union[str, None]:
         loser = self.board.check_loser()

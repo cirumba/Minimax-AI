@@ -1,63 +1,50 @@
 import random
 from typing import Tuple, Callable
+import math
+from ..tttm.gamestate import GameState
 
 
 
 def minimax_move(state, max_depth: int, eval_func: Callable) -> Tuple[int, int]:
-    """
-    Returns a move computed by the minimax algorithm with alpha-beta pruning for the given game state.
-    :param state: state to make the move (instance of GameState)
-    :param max_depth: maximum depth of search (-1 = unlimited)
-    :param eval_func: the function to evaluate a terminal or leaf state (when search is interrupted at max_depth)
-                    This function should take a GameState object and a string identifying the player,
-                    and should return a float value representing the utility of the state for the player.
-    :return: (int, int) tuple with x, y coordinates of the move (remember: 0 is the first row/column)
-    """
-    def maximize(state, alpha, beta, depth, max_depth, eval_func):
-        if state.is_terminal() or (max_depth != -1 and depth >= max_depth):
-            return eval_func(state, state.player), None
-
-        best_value = float('-inf')
-        best_move = None
-        
-        for move in state.legal_moves():
-            successor = state.next_state(move)
-            value, _ = minimize(successor, alpha, beta, depth + 1, max_depth, eval_func)
-            
-            if value > best_value:
-                best_value = value
-                best_move = move
-            
-            alpha = max(alpha, best_value)
-            if alpha >= beta:
-                break
-                
-        return best_value, best_move
-
-    def minimize(state, alpha, beta, depth, max_depth, eval_func):
-        if state.is_terminal() or (max_depth != -1 and depth >= max_depth):
-            return eval_func(state, state.player), None
-            
-        best_value = float('inf')
-        best_move = None
-        
-        for move in state.legal_moves():
-            
-            successor = state.next_state(move)
-            value, _ = maximize(successor, alpha, beta, depth + 1, max_depth, eval_func)
-            
-            if value < best_value:
-                best_value = value
-                best_move = move
-                
-            beta = min(beta, best_value)
-            if alpha >= beta:
-                break
-                
-        return best_value, best_move
-
     if state.is_initial_state():
-        return (1, 1)  # Best first move for inverted TTT
+        return (1, 1)
+    
+    def minimax(state: GameState, depth: int, alpha: float, beta: float, maximizing_player: bool) -> Tuple[float, Tuple[int, int]]:
+       
+        if state.is_terminal() or (depth == 0 and max_depth != -1):
+            score = eval_func(state, state.player)
+            print(f"Terminal State: {state}\nScore: {score}\n")
+            return score, None
 
-    value, move = maximize(state, float('-inf'), float('inf'), 0, max_depth, eval_func)
-    return move
+        best_move = None
+
+        if maximizing_player:
+            max_eval = -math.inf
+            for action in state.legal_moves():
+                successor = state.next_state(action)
+                eval_score, _ = minimax(successor, depth - 1, alpha, beta, False)
+                #print(f"Maximizing: Action: {action}, Eval: {eval_score}")
+                if eval_score > max_eval:
+                    max_eval = eval_score
+                    best_move = action
+                alpha = max(alpha, eval_score)
+                if beta <= alpha:
+                    break  # Poda
+            return max_eval, best_move
+        else:
+            min_eval = math.inf
+            for action in state.legal_moves():
+                successor = state.next_state(action)
+                eval_score, _ = minimax(successor, depth - 1, alpha, beta, True)
+                #print(f"Minimizing: Action: {action}, Eval: {eval_score}")
+                if eval_score < min_eval:
+                    min_eval = eval_score
+                    best_move = action
+                beta = min(beta, eval_score)
+                if beta <= alpha:
+                    break  # Poda
+            return min_eval, best_move
+
+    _, best_move = minimax(state, max_depth, -math.inf, math.inf, state.player == 'B')
+    print(f"Chosen Move: {best_move}")
+    return best_move
