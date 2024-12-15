@@ -10,7 +10,7 @@ Utilizamos apenas bibliotecas padrão do Python e não precisa da instalação d
 
 Bibliotecas usadas: 
 
-## Avaliação 
+## Avaliação TicTacToe
  
 - O minimax sempre ganha ou empata jogando contra o randomplayer?    
 Resposta: Sim, o Minimax deve sempre ganhar ou empatar contra jogadas aleatórias. O Minimax explora todas as possibilidades do jogo e escolhe o melhor movimento possível.
@@ -21,27 +21,17 @@ Resposta: Sim, se houver uma estratégia perfeita para ambos os lados, o Minimax
 - O minimax não perde para você quando você usa a sua melhor estratégia?    
 Resposta: Sim, o Minimax não deve perder se for implementado corretamente, pois ele calcula todas as possibilidades e sempre escolhe o movimento que evita a derrota.      
 
-## Othello
--  Para  o  Othello,  faça  um  mini-torneio  entre  os  algoritmos  (minimax  com  as  três  heurísticas), 
-considerando as partidas abaixo. Para cada partida, relate quem venceu e o número de peças final de 
-cada  agente.  Note  que  os  mesmos  oponentes  se  enfrentam  duas  vezes,  em  cada  uma  delas,  cada 
-oponente começa jogando uma vez. 
+## Avaliação Othello
  
 Partidas: 
-Contagem de peças X Valor posicional: 
-Valor posicional X Contagem de peças: 
-Contagem de peças X Heurística customizada: 
-Heurística customizada X Contagem de peças: 
-Valor posicional X Heurística customizada: 
-Heurística customizada X Valor posicional: 
+Contagem de peças X Valor posicional: Posicional
+Valor posicional X Contagem de peças: Posicional
+Contagem de peças X Heurística customizada: Customizada
+Heurística customizada X Contagem de peças: Customizada
+Valor posicional X Heurística customizada: Customizada
+Heurística customizada X Valor posicional: Customizada
  
-Também  observe  e  relate  qual  implementação  foi  a  mais  bem-sucedida  de  todas  (a  que  mais  teve 
-vitórias e, caso tenha empate nesse critério, a que mais capturou peças). 
-- Explique  a  heurística  customizada  e,  caso  tenha  sido  utilizada  alguma  fonte  (como 
-artigo ou site), indique a fonte também, explicando como as fontes foram utilizadas (a 
-heurística foi utilizada conforme apresentada na fonte, foi uma combinação de ideias 
-de fontes diferentes, foi totalmente projetada pelo grupo, sem utilização de fontes,...);  
-- descrição do critério de parada do agente (profundidade máxima fixa? 
-aprofundamento iterativo parado por tempo?etc); 
-- Resultado da avaliação (ver item “b” da seção 2.3); 
-- Explique a implementação escolhida para o torneio. 
+Também  observe  e  relate  qual  implementação  foi  a  mais  bem-sucedida  de  todas: Melhor heuristica foi a customizada 
+- Explique  a  heurística  customizada: Equilibrar controle de bordas, estabilidade e mobilidade.Abordagem balanceada que combina aspectos das outras heurísticas.Sendo boa em todas as fases do jogo. 
+- Descrição do critério de parada do agente: O agente utiliza o algoritmo Minimax com Poda Alfa-Beta, limitado a uma profundidade máxima fixa de 3 níveis, sendo um compromisso entre desempenho computacional e qualidade das decisões.
+- Explique a implementação escolhida para o torneio: Foi escolhida a heuristica customizada visto que eh a mais vencedora.
