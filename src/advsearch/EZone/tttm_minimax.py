@@ -22,9 +22,9 @@ def make_move(state: GameState) -> Tuple[int, int]:
 def utility(state, player:str) -> float:
     winner = state.winner()
     if winner == player:
-        return 1
+        return 100
     elif winner is not None:
-        return -1
+        return -100
     elif state.is_terminal():
         return 0
 

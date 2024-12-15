@@ -58,6 +58,9 @@ class GameState:
         col, row = move
         new_state.board.place_marker(self.player, row, col)
 
+        print(f"Move: {move}, Player: {self.player} -> New Player: {'B' if self.player == 'W' else 'W'}")
+        print(f"New Board: {new_state.board}")
+
         # Toggle the player for the next move
         new_state.player = 'B' if self.player == 'W' else 'W'
 

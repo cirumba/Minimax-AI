@@ -8,7 +8,7 @@ Turma da Manha (A)
 ## Dependências(MUDAR)
 Utilizamos apenas bibliotecas padrão do Python e não precisa da instalação de dependências externas.
 
-Bibliotecas usadas: `typing`, `heapq` & `collections`
+Bibliotecas usadas: `math` & ``
 
 ## Avaliação 
  
