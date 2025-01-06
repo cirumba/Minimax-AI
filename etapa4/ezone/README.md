@@ -8,8 +8,6 @@ Turma da Manha (A)
 ## Dependências(MUDAR)
 Utilizamos apenas bibliotecas padrão do Python e não precisa da instalação de dependências externas.
 
-Bibliotecas usadas: 
-
 ## Avaliação TicTacToe
  
 - O minimax sempre ganha ou empata jogando contra o randomplayer?    
